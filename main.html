@@ -2,23 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Form Login</title>
+  <script>
+    // Function to handle form submission
+    function getFormvalue(event) {
+      // Prevent form from refreshing the page
+      event.preventDefault();
+
+      // Retrieve and trim input values
+      const firstName = document.querySelector("input[name='fname']").value.trim();
+      const lastName = document.querySelector("input[name='lname']").value.trim();
+
+      // Combine names
+      const fullName = `${firstName} ${lastName}`.trim();
+
+      // Handle edge cases
+      if (!firstName && !lastName) {
+        alert("Please enter your first and last name!");
+      } else if (!firstName) {
+        alert("Please enter your first name!");
+      } else if (!lastName) {
+        alert("Please enter your last name!");
+      } else {
+        // Display the full name
+        alert(fullName);
+      }
+    }
+  </script>
 </head>
 <body>
-
-  <h2>User Login Form</h2>
-
-  <!-- ✅ Form with First Name and Last Name -->
+  <h2>📝 Form Login</h2>
   <form onsubmit="getFormvalue(event)">
-    <label for="fname">First Name:</label>
-    <input type="text" name="fname" id="fname"><br><br>
+    <label for="fname">First Name:</label><br>
+    <input type="text" name="fname" id="fname" placeholder="Enter First Name"><br><br>
 
-    <label for="lname">Last Name:</label>
-    <input type="text" name="lname" id="lname"><br><br>
+    <label for="lname">Last Name:</label><br>
+    <input type="text" name="lname" id="lname" placeholder="Enter Last Name"><br><br>
 
-    <button type="submit">Submit</button>
+    <input type="submit" value="Submit">
   </form>
-
-  <script src="script.js"></script>
 </body>
 </html>
