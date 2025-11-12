@@ -1,46 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form Login</title>
-  <script>
-    // Function to handle form submission
-    function getFormvalue(event) {
-      // Prevent form from refreshing the page
-      event.preventDefault();
+<html>
+    <head>
+        <title>Form-Login</title>
+    </head>
+    <body>
+        <h2>Form Login</h2>
+        <form id="form">
+            <label for="firstName">First Name</label>
+            <br>
+            <input type="text" name="fname" placeholder="Enter First Name" name="First Name" required>
+            <br>
+            <br>
+            <label for="lastName"> Last Name </label>
+            <br>
 
-      // Retrieve and trim input values
-      const firstName = document.querySelector("input[name='fname']").value.trim();
-      const lastName = document.querySelector("input[name='lname']").value.trim();
+            <input type="text" name="lname" placeholder="Enter Last Name" name="LastName" required>
 
-      // Combine names
-      const fullName = `${firstName} ${lastName}`.trim();
+        <br>
+        <br>
+        <input type="submit" value="Submit">
 
-      // Handle edge cases
-      if (!firstName && !lastName) {
-        alert("Please enter your first and last name!");
-      } else if (!firstName) {
-        alert("Please enter your first name!");
-      } else if (!lastName) {
-        alert("Please enter your last name!");
-      } else {
-        // Display the full name
-        alert(fullName);
-      }
-    }
-  </script>
-</head>
-<body>
-  <h2>📝 Form Login</h2>
-  <form onsubmit="getFormvalue(event)">
-    <label for="fname">First Name:</label><br>
-    <input type="text" name="fname" id="fname" placeholder="Enter First Name"><br><br>
+        </form>
+        <script>
 
-    <label for="lname">Last Name:</label><br>
-    <input type="text" name="lname" id="lname" placeholder="Enter Last Name"><br><br>
+            const form = document.getElementById("form");
+            form.addEventListener("submit",getFormvalue);
 
-    <input type="submit" value="Submit">
-  </form>
-</body>
+            function getFormvalue(e){
+                e.preventDefault();
+                // targeting the names of form 
+
+                const firstName = e.target[0].value.trim();
+                const lastName = e.target[1].value.trim();
+
+                // combing the names
+
+                const fullName = `${firstName} ${lastName}`
+
+                // alaerting the name display
+
+                if(!firstName){
+                    alert("Enter The First Name")
+                }else if(!lastName){
+                    alert("Enter The Last Name ")
+                }else if(!firstName && !lastName ){
+                    alert("Enter First Name And Last Name ")
+                }else{
+                    alert(fullName)
+                }
+              
+            }
+
+        </script>
+    </body>
 </html>
